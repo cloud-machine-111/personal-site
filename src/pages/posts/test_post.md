@@ -10,4 +10,4 @@ author: 'cm-111'
 tags: []
 ---
 
-readings and adventures here soon
+(todo) gaseous adventures this month
