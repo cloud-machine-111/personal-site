@@ -10,4 +10,4 @@ Right now, I’m spending my waking hours working on my senior thesis, which app
 
 I’d really love to talk about any of this (new ideas and pushback are both so valuable!), which I suppose means some sort of online deliverable that more helpfully sparks conversation - please be patient for this :)
 
-More broadly in life, some things I love are [visual art](/art) (comic art, printmaking), the critical history of language technology, and all of Kaveh Akbar’s Pilgrim Bell poems.
+More broadly in life, some things I love are [visual art](/personal-site/art) (comic art, printmaking), the critical history of language technology, and all of Kaveh Akbar’s Pilgrim Bell poems.

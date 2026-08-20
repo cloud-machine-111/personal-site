@@ -2,4 +2,4 @@
 layout: /src/layouts/BlogPostLayout.astro
 ---
 
-under construction!!! not for long!!!
+...will be here soon!
