@@ -1,0 +1,64 @@
+---
+import Layout from "./Layout.astro";
+const { frontmatter } = Astro.props;
+
+const parsedPubDate = new Date(frontmatter.pubDate);
+const pubDate = isNaN(parsedPubDate.valueOf())
+  ? "no date"
+  : parsedPubDate.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+---
+
+<style>
+  .post-contents {
+    border: 1.5px rgb(52, 52, 161) solid;
+    width: 60vw;
+    padding: 1rem 2rem 4rem;
+    margin: 8vh auto;
+
+    .ascii-div {
+      color: rgb(52, 52, 161);
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      /* text-overflow: ellipsis; */
+    }
+  }
+  .metadata-bar {
+    /* border: 1px black solid; */
+    font-size: .65em;
+    font-style: italic;
+    display: flex;
+    gap: 1rem;
+
+    div {
+      background-color: rgb(207, 210, 237);
+      box-sizing: border-box;
+      /* margin: 0 10vw 0 0; */
+      padding: 0.1rem .4rem;
+    }
+  }
+</style>
+
+<Layout title={frontmatter.title}>
+
+  
+  <div class="post-contents">
+
+    <div class="metadata-bar"> 
+      <div> Post author: {frontmatter.author} </div>
+      
+      <div> {pubDate} </div>
+    </div>
+
+    <h1>{frontmatter.title}</h1>
+    <div class="ascii-div">-ˋˏ✄┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈ </div>
+    
+
+    <slot />
+  </div>
+  
+</Layout>

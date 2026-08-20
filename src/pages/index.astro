@@ -1,11 +1,63 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Welcome from "../components/Welcome.astro";
+import BlogPosts from "../components/posts_list.astro";
+import Layout from "../layouts/Layout.astro";
+import Bio from "../assets/bio.md";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Home">
+	<div class="float-container" style="margin: 8vw; max-width: 1200px;">
+		<div class="float-child" style="width: 80%;">
+			<div class="sketch-box padded-content">
+				<div class="intro-wrap">
+					<img src="src/assets/headshot.png" class="headshot" />
+
+					<h2>Hi, I’m Ran!</h2>
+					<Bio />
+
+					<br />
+					<div class="button-row">
+						<a href="/coming-soon" class="button">cv</a>
+						<a href="https://github.com/cloud-machine-111" class="button">github</a>
+						<a href="https://www.linkedin.com/in/ran-zhao-8144592aa/" class="button">linkedin</a>
+					</div>
+				</div>
+			</div>
+
+			<br />
+			<div class="sketch-box padded-content" id="projects">
+				<div class="float-container">
+					<div
+						class="float-child padded-content split-divider"
+						style="width: 50%;"
+					>
+						<h2>Projects</h2>
+						<i>...will be populated so shortly.</i>
+					</div>
+					<div class="float-child padded-content" style="width: 50%">
+						<h2>Updates</h2>
+						<BlogPosts/>
+					</div>
+				</div>
+			</div>
+			<br />
+			<div class="sketch-box padded-content" id="contact">
+				<h2>Contact</h2>
+				<br />
+
+				Please feel free to reach out! You can find my email in the
+				Brown CS <a href="https://cs.brown.edu/people/ugrad/rzhao52/"
+					>directory</a>.
+			</div>
+		</div>
+	</div>
+
+	<!-- <div class="navbar"> 
+	progress bar 
+</div> -->
+
+	<br />
 </Layout>

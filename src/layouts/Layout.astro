@@ -1,23 +1,239 @@
+---
+import { Font } from "astro:assets";
+import Header from "../components/Header.astro";
+import Footer from "../components/footer.astro";
+import Navbar from "../components/navbar.astro";
+const { title = "cloud-machine-111" } = Astro.props;
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<link rel="icon" type="image/svg+xml" href="/src/assets/pond-chair.png" />
+		<!-- <link rel="icon" href="/favicon.ico" /> -->
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<Font cssVariable="--font-averia-serif-libre" />
+		<title>{title}</title>
 	</head>
 	<body>
+		<Header />
+		<br>
 		<slot />
+		<Navbar />
 	</body>
+	<Footer />
 </html>
 
-<style>
-	html,
+<style is:global>
+	html {
+		/* cursor: url("../assets/convertico-skel_icon.ico") -10 -20, pointer; */
+		scroll-behavior: smooth;
+	}
+	
+	/* base styling  */
 	body {
-		margin: 0;
 		width: 100%;
 		height: 100%;
+		font-size: .9rem;
+		font-family: var(--font-averia-serif-libre);
+		background-color: rgb(248, 248, 248);
 	}
+
+	h2 {
+	text-transform: uppercase;	
+	}
+
+	a {
+		font-style: italic;
+		color: rgb(169, 108, 200);
+	}
+
+    a:hover {
+        background-color: rgb(198, 255, 9);
+		animation: tilt-shaking .5s infinite linear;
+		
+    }
+
+	/* tilting animation */
+
+	@keyframes tilt-shaking {
+	0% { transform: rotate(0deg); }
+	25% { transform: rotate(5deg); }
+	50% { transform: rotate(0deg); }
+	75% { transform: rotate(-5deg); }
+	100% { transform: rotate(0deg); }
+	}
+
+	/* end of tilting anim */
+
+	/* base custom styling */
+	.padded-content {
+		padding: 2rem;
+	}
+
+	.sketch-box {
+		border: 10px solid rgb(178, 99, 99);
+		border-image: url('../assets/sketchy_border.png')10% stretch;
+	}
+	
+	.sketch-boox {
+		/* display: inline-block; */
+		border: 2px solid #333333;
+
+		border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
+		letter-spacing: 0.3ch;
+		position: relative;
+
+		&::before {
+			content: "";
+			border: 2px solid #343434;
+			display: block;
+			width: 99%;
+			height: 100%;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate3d(-50%, -50%, 0) scale(1.015) rotate(0.5deg);
+			border-radius: 1% 1% 2% 4% / 2% 6% 5% 4%;
+		}
+	}
+
+	.button {
+		/* border: 10px solid; */
+		/* border-image: url('../assets/sketchy_border_1.png') 25% stretch; */
+
+		background: rgb(220, 255, 160);
+		border-radius: 5px;
+		margin: 10px;
+		padding: 10px 20px;
+		text-decoration: none;
+	}
+
+	.button-row {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	
+	.header {
+		width: 100%;
+		padding: 1rem 0 0 1rem;
+		/* margin: 1rem 3rem; */
+		position: fixed;
+		top: 0px;
+		a {
+			margin: 3vw;
+		}
+		background-color: rgb(248, 248, 248);
+	}
+
+	.navbar {
+		position: fixed;
+		display: flex;
+		bottom: 0.5vw;
+		height: 3vw;
+		width: 90%;
+		background-color: rgb(63, 216, 163);
+		border-radius: 2rem;
+		/* align-items: center; */
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.sidebar {
+		position: fixed;
+		top: 8vw;
+		right: 0px;
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+		a:link {
+			text-decoration: none;
+		}
+		a {
+			font-size: 1.4vw;
+			margin-bottom: 3vh;
+		img {
+			width: 8vh;
+		}	
+		}
+	}
+	/* end of base styling */
+
+	/* SPLIT CONTAINER FMT */
+	.float-container {
+		display: flex;
+		box-sizing: border-box;
+		align-self: center;
+
+
+		/* puts img above intro if narrow width */
+		@media (max-width: 699px) {
+			flex-direction: column-reverse !important;
+		}
+	}
+
+	.float-child {
+		width: 45%;
+		align-self: flex-start;
+		/* border: 0.1px solid #643e3e; */
+		img {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			width: 100%;
+		}
+	}
+
+	.split-divider {
+		border-right: .8px solid rgb(87, 86, 86);
+	}
+
+	/* divider only makes sense in the side-by-side layout */
+	@media (max-width: 699px) {
+		.split-divider {
+			border-right: none;
+		}
+	}
+
+	/* INTRO: TEXT WRAPS AROUND HEADSHOT */
+	.intro-wrap {
+		display: flow-root; /* clearfix so the floated headshot doesn't collapse the card */
+	}
+
+	.intro-wrap .headshot {
+		float: right;
+		width: 28%;
+		padding: 1rem;
+		margin: 0 0 1.2rem 1.5rem;
+	}
+
+	/* puts img above intro if narrow width */
+	@media (max-width: 699px) {
+		.intro-wrap .headshot {
+			float: none;
+			width: 50%;
+			margin: 0 0 1rem 0;
+		}
+	}
+
+	form {
+		label {
+			display: block;
+			padding: 10px;
+		}
+	}
+	
+	.footnotes {
+		font-size: 0.6rem;
+	}
+
+	.footnotes h2 {
+		display: none;
+	}
+
+	/* END OF SPLIT CONTAINER */
 </style>
