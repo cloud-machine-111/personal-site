@@ -3,6 +3,7 @@ import Welcome from "../components/Welcome.astro";
 import BlogPosts from "../components/posts_list.astro";
 import Layout from "../layouts/Layout.astro";
 import Bio from "../assets/bio.md";
+import HeadShot from '../assets/headshot.png';
 
 ---
 
@@ -11,7 +12,7 @@ import Bio from "../assets/bio.md";
 		<div class="float-child" style="width: 80%;">
 			<div class="sketch-box padded-content">
 				<div class="intro-wrap">
-					<img src="src/assets/headshot.png" class="headshot" />
+					<img src={HeadShot.src} class="headshot" />
 
 					<h2>Hi, I’m Ran!</h2>
 					<Bio />
@@ -33,7 +34,7 @@ import Bio from "../assets/bio.md";
 						style="width: 50%;"
 					>
 						<h2>Projects</h2>
-						<i>...will be populated so shortly.</i>
+						<i>...will be populated in a jiffy..</i>
 					</div>
 					<div class="float-child padded-content" style="width: 50%">
 						<h2>Updates</h2>
